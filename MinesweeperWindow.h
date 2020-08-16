@@ -16,11 +16,14 @@ private:
 
 	const int width;
 	const int height;
+	const int mines;
+	int minesLeft;
+	int tilesLeft;
+
 	
 
 	
 	Vector_ref<Tile> tiles; 
-	const int mines;
 	
 
 	//Height and Width (pixel)
@@ -41,6 +44,27 @@ private:
 	void openTile(Point xy);
 	void flagTile(Point xy);
 
-	//callback funksjon for tile knappen
+	void gameWon();
+	void gameLost();
+
+	//callback fuctions tile
 	static void cb_click(Address, Address pw);
+
+	static void cb_quit(Address, Address win);
+	void quit() {cout << ": quit called\n"; hide();}
+
+	static void cb_restart(Address, Address pw);
+	void restart();
+
+	// Text at the top of the window
+	Text gameStateText;
+
+	// Restart and quit button
+	Button quitBtn;
+	Button restartBtn;
+
+	// Game ended
+	Rectangle gameEndBackground;
+	Text gameEndText;
+	
 };
