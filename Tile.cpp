@@ -20,7 +20,7 @@ void Tile::open()
 {
 	if (state != Cell::flagged) {
 		static_cast<Fl_Button*>(pw)->set(); // open tile
-		setState(Cell::open);
+		state = Cell::open;
 		
 		if (isMine) {
 			set_label("X");
@@ -34,10 +34,10 @@ void Tile::open()
 void Tile::flag()
 {
 	if (state == Cell::flagged) {
-		setState(Cell::closed);
+		state = Cell::closed;
 		set_label(cellToSymbol.at(Cell::closed));
 	} else {
-		setState(Cell::flagged);
+		state = Cell::flagged;
 		set_label(cellToSymbol.at(Cell::flagged));
 		set_label_color(Color::blue);
 	}

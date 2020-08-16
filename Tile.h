@@ -16,13 +16,13 @@ class Tile : public Button
 	void set_label_color(Color c) { pw->labelcolor(c.as_int()); redraw();}
 public:
 	Tile(Point pos, int size, Graph_lib::Callback cb, bool isMine=false)
-		:Button{pos, size, size, "", cb} {};
+		:Button{pos, size, size, "", cb}, isMine{isMine} {};
 	
 	Cell getState() const {return state; }
-	void setState(Cell newState) {state = newState;}
+	
 
-	bool getIsMine() const {return isMine;}
-	void setIsMine(bool mineState) {isMine = mineState;}
+	bool getIsMine() const {return isMine; }
+	void setIsMine(bool mineState) {this->isMine = mineState;}
 
 	void open(); 
 	void flag();
