@@ -28,4 +28,6 @@ public:
 	void flag();
 
 	void setNeighborMines(int n); 
+
+	void reset();
 };

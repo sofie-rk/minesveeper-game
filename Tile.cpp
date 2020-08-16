@@ -48,3 +48,11 @@ void Tile::setNeighborMines(int n)
 	set_label(to_string(n));
 	set_label_color(minesToColor.at(n));
 }
+
+void Tile::reset()
+{
+	state = Cell::closed;
+	set_label(cellToSymbol.at(Cell::closed));
+	static_cast<Fl_Button*>(pw)->clear(); // button which is not pressed
+	isMine = false;
+}
