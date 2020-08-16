@@ -3,23 +3,27 @@
 #include "Tile.h"
 
 using namespace Graph_lib;
+
 enum class MouseButton { left = FL_LEFT_MOUSE, right = FL_RIGHT_MOUSE }; //
 
 // Minesweeper GUI
 class MinesweeperWindow : public Graph_lib::Window
 {
 public:
-	//storrelsen til hver rute
 	static constexpr int cellSize = 30;
 	MinesweeperWindow(Point xy, int width, int height, int mines, const string& title);
 private:
 
-	const int width;//width i miner 
-	const int height;//heigth i miner
-	const int mines;//Antall miner
-	Vector_ref<Tile> tiles; // Vektor som inneholder alle tiles
+	const int width;
+	const int height;
+	
 
-	//Height og Width i piksler
+	
+	Vector_ref<Tile> tiles; 
+	const int mines;
+	
+
+	//Height and Width (pixel)
 	int Height() const { return height * cellSize; }
 	int Width() const { return width * cellSize; }
 
