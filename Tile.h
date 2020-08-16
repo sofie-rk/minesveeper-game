@@ -3,21 +3,29 @@
 
 using namespace Graph_lib;
 
-//De forskjellige tilstandene en Tile kan vaere i
+// Tile's three states
 enum class Cell { closed, open, flagged };
 
+// Tile is inherited from Button
 class Tile : public Button
 {
 	Cell state = Cell::closed;
+	bool isMine;
 
 	void set_label(string s) { label = s; redraw(); }
 	void set_label_color(Color c) { pw->labelcolor(c.as_int()); redraw();}
 public:
-	Tile(Point pos, int size, Graph_lib::Callback cb)
+	Tile(Point pos, int size, Graph_lib::Callback cb, bool isMine=false)
 		:Button{pos, size, size, "", cb} {};
 	
-	Cell getState() const {return state; };
+	Cell getState() const {return state; }
+	void setState(Cell newState) {state = newState;}
 
-	void open(); // aapner ruten
-	void flag();// Flagger en rute
+	bool getIsMine() const {return isMine;}
+	void setIsMine(bool mineState) {isMine = mineState;}
+
+	void open(); 
+	void flag();
+
+	void setNeighborMines(int n); 
 };
